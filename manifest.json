@@ -1,0 +1,8 @@
+{
+  "manifest_version": 2,
+  "name": "Bitbucket JIRA Linker",
+  "version": "0.1",
+
+  "default locale": "en",
+  "description": "Links commit messages to JIRA ticket"
+}
