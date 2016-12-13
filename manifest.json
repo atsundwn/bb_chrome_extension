@@ -1,8 +1,13 @@
 {
-  "manifest_version": 2,
-  "name": "Bitbucket JIRA Linker",
-  "version": "0.1",
+    "manifest_version": 2,
+    "name": "Bitbucket JIRA Linker",
+    "version": "0.1",
+    "description": "Links commit messages to JIRA ticket",
 
-  "default locale": "en",
-  "description": "Links commit messages to JIRA ticket"
+    "content_scripts": [
+        {
+            "matches": ["https://bitbucket.org/buildingengines/*"],
+            "js": ["jquery-3.1.1.min.js", "content.js"]
+        }
+    ]
 }
