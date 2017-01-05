@@ -14,8 +14,10 @@ function doTask()
                         ,['(TEMOB\\-\\d\\d\\d\\d|temob\\-\\d\\d\\d\\d)', 10]
                         ,['(TEMOB\\-\\d\\d\\d\\D|temob\\-\\d\\d\\d\\D)', 9]
                         ,['(MAINT\\-\\d\\d\\d\\d|maint\\-\\d\\d\\d\\d)', 10]
-                        ,['(MAINT\\-\\d\\d\\d[\\D\\S]|maint\\-\\d\\d\\d)', 9]
+                        ,['(MAINT\\-\\d\\d\\d|maint\\-\\d\\d\\d)', 9]
                         ,['(DEP\\-\\d\\d\\d|dep\\-\\d\\d\\d)', 7]
+                        ,['(PS\\-\\d\\d\\d\\d|ps\\-\\d\\d\\d\\d)', 7]
+                        ,['(PS\\-\\d\\d\\d\\D|ps\\-\\d\\d\\d\\D)', 6]
                      ];
 
         for(var i=0,l=filter.length; i < l; i++)
