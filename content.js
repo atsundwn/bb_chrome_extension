@@ -7,36 +7,33 @@ function doTask()
         var $this = $(this);
         var text = $this.text();
         var filter = [
-                         ['(core\\-\\d\\d\\d\\d)', 9]
-                        ,['(cs\\-\\d\\d\\d\\d)', 7]
-                        ,['(bemob\\-\\d\\d\\d\\d)', 10]
-                        ,['(bemob\\-\\d\\d\\d\\D)', 9]
-                        ,['(temob\\-\\d\\d\\d\\d)', 10]
-                        ,['(temob\\-\\d\\d\\d\\D)', 9]
-                        ,['(maint\\-\\d\\d\\d\\d)', 10]
-                        ,['(maint\\-\\d\\d\\d)', 9]
-                        ,['(dep\\-\\d\\d\\d)', 7]
-                        ,['(ps\\-\\d\\d\\d\\d)', 7]
-                        ,['(ps\\-\\d\\d\\d\\D)', 6]
+                         ['(core-\\d+)']
+                        ,['(cs-\\d+)']
+                        ,['(bemob-\\d+)']
+                        ,['(temob-\\d+)']
+                        ,['(maint-\\d+)']
+                        ,['(dep-\\d+)']
+                        ,['(ps-\\d+)']
                      ];
 
         for(var i=0,l=filter.length; i < l; i++)
         {
             var regex = new RegExp(filter[i][0], 'i');
-            var start = text.search(regex);
+            var text_found = text.search(regex);
 
-            if(start > -1)
+            // Search returns -1 if text is not found
+            if(text_found > -1)
             {
-                replaceLink(start, filter[i][1]);
+                replaceLink(text_found, regex);
             }
         };
 
         $this.html(text);
 
-        function replaceLink(start, length)
+        function replaceLink(start,regex)
         {
-            var ticket = text.substr(start, length);
-            text = text.replace(ticket, '<a href=http://issues.buildingengines.com/browse/' + ticket + ' target="_blank">' + ticket + '</a>');
+            var ticket = text.match(regex);
+            text = text.replace(regex, '<a href=http://issues.buildingengines.com/browse/' + ticket[0] + ' target="_blank">' + ticket[0] + '</a>');
         };
     });
 };
