@@ -18,7 +18,7 @@ function doTask()
 
         for(var i=0,l=filter.length; i < l; i++)
         {
-            var regex = new RegExp('(' + filter[i] + '-\\d+)', 'i');
+            var regex = new RegExp('(' + filter[i] + '-\\d+)', 'ig');
             var text_found = text.search(regex);
 
             // Search returns -1 if text is not found
@@ -32,9 +32,12 @@ function doTask()
 
         function replaceLink(regex)
         {
-            var ticket = text.match(regex);
+            var tickets = text.match(regex);
             var host_string = "issues.buildingengines.com"
-            text = text.replace(regex, '<a href=' + 'http://' + host_string + '/browse/' + ticket[0] + ' target="_blank">' + ticket[0] + '</a>');
+            for(var k=0,tl=tickets.length;k < tl; k++)
+            {
+                text = text.replace(tickets[k], '<a href=' + 'http://' + host_string + '/browse/' + tickets[k] + ' target="_blank">' + tickets[k] + '</a>');    
+            }
         };
     });
 };
