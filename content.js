@@ -1,42 +1,43 @@
 function doTask()
 {
-    var list_messages = $('.subject, .commit-message');
+    var commit_messages = $('.subject, .commit-message');
 
-    list_messages.each(function()
+    commit_messages.each(function()
     {
         var $this = $(this);
         var text = $this.text();
         var filter = [
-                         ['(CORE\\-\\d\\d\\d\\d|core\\-\\d\\d\\d\\d)', 9]
-                        ,['(CS\\-\\d\\d\\d\\d|cs\\-\\d\\d\\d\\d)', 7]
-                        ,['(BEMOB\\-\\d\\d\\d\\d|bemob\\-\\d\\d\\d\\d)', 10]
-                        ,['(BEMOB\\-\\d\\d\\d\\D|bemob\\-\\d\\d\\d\\D)', 9]
-                        ,['(TEMOB\\-\\d\\d\\d\\d|temob\\-\\d\\d\\d\\d)', 10]
-                        ,['(TEMOB\\-\\d\\d\\d\\D|temob\\-\\d\\d\\d\\D)', 9]
-                        ,['(MAINT\\-\\d\\d\\d\\d|maint\\-\\d\\d\\d\\d)', 10]
-                        ,['(MAINT\\-\\d\\d\\d|maint\\-\\d\\d\\d)', 9]
-                        ,['(DEP\\-\\d\\d\\d|dep\\-\\d\\d\\d)', 7]
-                        ,['(PS\\-\\d\\d\\d\\d|ps\\-\\d\\d\\d\\d)', 7]
-                        ,['(PS\\-\\d\\d\\d\\D|ps\\-\\d\\d\\d\\D)', 6]
+                         ['core']
+                        ,['cs']
+                        ,['bemob']
+                        ,['temob']
+                        ,['maint']
+                        ,['dep']
+                        ,['ps']
                      ];
 
         for(var i=0,l=filter.length; i < l; i++)
         {
-            var regex = new RegExp(filter[i][0]);
-            var start = text.search(regex);
+            var regex = new RegExp('(' + filter[i] + '-\\d+)', 'ig');
+            var text_found = text.search(regex);
 
-            if(start > -1)
+            // Search returns -1 if text is not found
+            if(text_found > -1)
             {
-                replaceLink(start, filter[i][1]);
+                replaceLink(regex);
             }
         };
 
         $this.html(text);
 
-        function replaceLink(start, length)
+        function replaceLink(regex)
         {
-            var ticket = text.substr(start, length);
-            text = text.replace(ticket, '<a href=http://issues.buildingengines.com/browse/' + ticket + '>' + ticket + '</a>');
+            var tickets = text.match(regex);
+            var host_string = "issues.buildingengines.com"
+            for(var k=0,tl=tickets.length;k < tl; k++)
+            {
+                text = text.replace(tickets[k], '<a href=' + 'http://' + host_string + '/browse/' + tickets[k] + ' target="_blank">' + tickets[k] + '</a>');    
+            }
         };
     });
 };
@@ -44,7 +45,6 @@ function doTask()
 $(document).on('click', function()
 {
     window.setTimeout(doTask(), 2000);
-
-
 });
+
 doTask();
