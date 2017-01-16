@@ -1,1 +1,1 @@
-# bb_chrome_extension
+# Chrome extension used to linkify JIRA tickets that are found in bitbucket commit messages. 
