@@ -131,3 +131,9 @@ input[type=checkbox] {
 #addprefix:hover {
   background-color: #bbb;
 }
+
+#status {
+  background-color: #f5f5f5;
+  color: #d04437;
+  font-size: 20px;
+}

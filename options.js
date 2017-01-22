@@ -62,7 +62,7 @@ function addFilter() {
   if (inputValue === '') {
     alert("You must write something!");
   } else {
-    document.getElementById("myUL").appendChild(li);
+    document.getElementById("myFilters").appendChild(li);
   }
   document.getElementById("inputprefix").value = "";
 
