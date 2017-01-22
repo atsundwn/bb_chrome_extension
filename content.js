@@ -2,7 +2,7 @@ function doTask()
 {
     var commit_messages = $('.subject, .commit-message');
 
-    chrome.storage.sync.get(['useAutodetect'], function(items) {
+    chrome.storage.sync.get(['useAutodetect', 'useHostname'], function(items) {
 
         commit_messages.each(function()
         {
@@ -52,12 +52,13 @@ function doTask()
             function replaceLink(regex)
             {
                 var tickets = text.match(regex);
-                var host_string = "issues.buildingengines.com"
+                var host_string = items["useHostname"];
                 for(var k=0,tl=tickets.length;k < tl; k++)
                 {
                     text = text.replace(tickets[k], '<a href=' + 'http://' + host_string + '/browse/' + tickets[k] + ' target="_blank">' + tickets[k] + '</a>');    
                 }
             }; //end replaceLink
+
         }); //end commit-msg loop
     }); //end chrome sync
 }; //end doTask()
