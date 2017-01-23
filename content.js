@@ -1,6 +1,6 @@
 function doTask()
 {
-    var commit_messages = $('.subject, .commit-message');
+    var commit_messages = $('.subject, .commit-message, .changeset');
 
     chrome.storage.sync.get(['useAutodetect', 'useHostname'], function(items) {
 
@@ -41,7 +41,7 @@ function doTask()
                 //         replaceLink(regex);
                 //     }
                 // };
-                
+
             } else {
                 console.log(items["useAutodetect"]);
                 throw new Error("Something went terribly wrong!");
@@ -55,7 +55,7 @@ function doTask()
                 var host_string = items["useHostname"];
                 for(var k=0,tl=tickets.length;k < tl; k++)
                 {
-                    text = text.replace(tickets[k], '<a href=' + 'http://' + host_string + '/browse/' + tickets[k] + ' target="_blank">' + tickets[k] + '</a>');    
+                    text = text.replace(tickets[k], '<a href=' + 'http://' + host_string + '/browse/' + tickets[k] + ' target="_blank">' + tickets[k] + '</a>');
                 }
             }; //end replaceLink
 
