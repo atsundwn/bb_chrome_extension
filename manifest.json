@@ -1,19 +1,31 @@
 {
     "manifest_version": 2,
+
     "name": "Bitbucket JIRA Linker",
-    "version": "0.5",
+
+    "version": "0.6",
+
+    "icons":
+    { "16": "wax16.png",
+      "48": "wax48.png",
+     "128": "wax128.png"
+    },
+
     "options_ui":
     {
         "page": "options.html",
         "chrome_style": true
     },
+
     "description": "Links commit messages to JIRA ticket",
+
     "content_scripts": [
         {
             "matches": ["https://bitbucket.org/*", "file:///*/test*.html"],
             "js": ["jquery-3.1.1.min.js", "content.js"]
         }
     ],
+
     "permissions": [
         "storage"
     ]
