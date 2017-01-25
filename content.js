@@ -54,7 +54,6 @@ function doTask()
                 for(var k=0,tl=tickets.length;k < tl; k++)
                 {
                     text = text.replace(tickets[k], '<a href=' + 'http://' + host_string + '/browse/' + tickets[k] + ' target="_blank">' + tickets[k] + '</a>');
-                    console.log(text);
                     $this.html(text);
                 }
             }; //end replaceLink
