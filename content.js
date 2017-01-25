@@ -7,12 +7,13 @@ function doTask()
         commit_messages.each(function()
         {
             var $this = $(this);
-            var text = $this.text();
+            var text = $this.html();
 
             if (items["useAutodetect"] == true)
             {
                 var regex = new RegExp('([a-z]{2,}-\\d+)', 'ig');
                 var text_found = text.search(regex);
+
                 // Search returns -1 if text is not found
                 if(text_found > -1)
                 {
@@ -41,13 +42,10 @@ function doTask()
                 //         replaceLink(regex);
                 //     }
                 // };
-
             } else {
                 console.log(items["useAutodetect"]);
                 throw new Error("Something went terribly wrong!");
             }
-
-            $this.html(text);
 
             function replaceLink(regex)
             {
@@ -56,9 +54,9 @@ function doTask()
                 for(var k=0,tl=tickets.length;k < tl; k++)
                 {
                     text = text.replace(tickets[k], '<a href=' + 'http://' + host_string + '/browse/' + tickets[k] + ' target="_blank">' + tickets[k] + '</a>');
+                    $this.html(text);
                 }
             }; //end replaceLink
-
         }); //end commit-msg loop
     }); //end chrome sync
 }; //end doTask()
