@@ -1,9 +1,9 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
-  var bool_autodetect = document.getElementById('autocheckbox').checked;
+  var bool_usessl = document.getElementById('sslcheckbox').checked;
   var input_hostname = document.getElementById('inputhostname').value;
   chrome.storage.sync.set({
-    useAutodetect: bool_autodetect,
+    useSSL: bool_usessl,
     useHostname: input_hostname
   }, function() {
     // Update status to let user know options were saved.
@@ -20,10 +20,10 @@ function save_options() {
 // Defined values are defaults.
 function restore_options() {
   chrome.storage.sync.get({
-    useAutodetect: true,
+    useSSL: false,
     useHostname: "bitbucket.org"
   }, function(items) {
-    document.getElementById('autocheckbox').checked = items.useAutodetect;
+    document.getElementById('sslcheckbox').checked = items.useSSL;
     document.getElementById('inputhostname').value = items.useHostname;
   });
 }

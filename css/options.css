@@ -61,16 +61,20 @@ ul li.checked {
   color: white;
 }
 
-/* Style the autodetect */
-.autodetect {
+/* Style the usessl */
+.usessl {
   background-color: #14892c;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 /* Style the hostname */
 .hostname {
   background-color: #3572b0;
   font-size: 20px;
+}
+
+#inputhostname {
+  text-align: center;
 }
 
 .save {
