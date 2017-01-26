@@ -5,10 +5,15 @@
 
     "version": "0.6",
 
+    "browser_action": {
+        "default_icon": "icons/wax48.png"
+    },
+
     "icons":
-    { "16": "wax16.png",
-      "48": "wax48.png",
-     "128": "wax128.png"
+    { 
+        "16": "icons/wax16.png",
+        "48": "icons/wax48.png",
+        "128": "icons/wax128.png"
     },
 
     "options_ui":
@@ -22,7 +27,7 @@
     "content_scripts": [
         {
             "matches": ["https://bitbucket.org/*", "file:///*/test*.html"],
-            "js": ["jquery-3.1.1.min.js", "content.js"]
+            "js": ["js/jquery-3.1.1.min.js", "js/content.js"]
         }
     ],
 
