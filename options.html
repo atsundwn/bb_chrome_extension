@@ -2,37 +2,23 @@
 <html>
 <head>
   <title>Linkify JIRA Ticket Options Panel</title>
-  <link rel="stylesheet" type="text/css" href="options.css" />
+  <link rel="stylesheet" type="text/css" href="css/options.css" />
 </head>
 <body>
 
-  <div class="autodetect header">
-    <input type="checkbox" id="autocheckbox"> Auto-detect JIRA tickets*
+  <div class="usessl header">
+    <input type="checkbox" id="sslcheckbox">  Select this option if your JIRA server uses https.
   </div>
 
   <div class="hostname header">
     Input JIRA hostname <input type="text" id="inputhostname" placeholder="issues.jiraland.com">
   </div>
 
-<!--   <div class="prefixbox header">
-    <h1 style="margin:5px">Ticket Prefixes</h1>
-    <input type="text" id="inputprefix" placeholder="CORE...">
-    <span id="addprefix">Add Prefix</span>
-  </div>
-
-  <ul id="myFilters" class="filter-box">
-    <li>PH</li>
-    <li>TH</li>
-    <li>AH</li>
-    <li>LA</li>
-    <li>PO</li>
-  </ul> -->
-
   <div class="save header">
     <div id="status"></div>
     <button id="save">Save</button>
   </div>
 
-  <script src="options.js"></script>
+  <script src="js/options.js"></script>
 </body>
 </html>
