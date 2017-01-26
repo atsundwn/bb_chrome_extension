@@ -20,28 +20,7 @@ function doTask()
                     replaceLink(regex);
                 }
             } else if (items["useAutodetect"] == false) {
-                // TODO: Remove placeholder code
-                // var filter = [
-                //                  ['core']
-                //                 ,['cs']
-                //                 ,['bemob']
-                //                 ,['temob']
-                //                 ,['maint']
-                //                 ,['dep']
-                //                 ,['ps']
-                //              ];
-
-                // for(var i=0,l=filter.length; i < l; i++)
-                // {
-                //     var regex = new RegExp('(' + filter[i] + '-\\d+)', 'ig');
-                //     var text_found = text.search(regex);
-
-                //     // Search returns -1 if text is not found
-                //     if(text_found > -1)
-                //     {
-                //         replaceLink(regex);
-                //     }
-                // };
+                
             } else {
                 console.log(items["useAutodetect"]);
                 throw new Error("Something went terribly wrong!");
